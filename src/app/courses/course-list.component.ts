@@ -3,7 +3,8 @@ import { Course } from "./course";
 import { CourseService } from "./course.service";
 
 @Component({
-    selector: 'app-course-list',
+    //selector: 'app-course-list', 
+    // a referência será por link de rota e não mais por selector
     templateUrl: './course-list.component.html'
 })
 export class CourseListComponent implements OnInit {
