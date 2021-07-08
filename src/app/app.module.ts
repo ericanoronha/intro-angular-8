@@ -8,6 +8,7 @@ import { StarComponent } from './star/star.component';
 import { ReplacePipe } from './pipe/replace.pipe';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
+import { Error404Component } from './error-404/error-404.component';
 
 @NgModule({
   declarations: [
@@ -15,23 +16,27 @@ import { RouterModule } from '@angular/router';
     CourseListComponent,
     StarComponent,
     ReplacePipe,
-    NavBarComponent
+    NavBarComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    // rotas padrões: '' e '**'
     RouterModule.forRoot([
       {
-        path: '', //raiz do path
+        path: '', //path com referência à raiz da base da aplicação
         redirectTo: 'courses', pathMatch: 'full'
       }, //objeto de rota
       {
         path: 'courses', //faz link da rota para o curso 
         component: CourseListComponent
       },
-      //{
-      //  path: '**', // rota nativa, se não encontrar a rota ele retorna erro 404
-      //} 
+      {
+        path: '**',
+        component: Error404Component
+        // rota nativa, se não encontrar a rota ele retorna erro 404
+      } 
     ]) //carrega rotas assim que inicializa a aplicação 
     //ativa o componente pela rota e não pelo selector
   ],
@@ -39,4 +44,3 @@ import { RouterModule } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-// rotas padrões: '' e '**'
